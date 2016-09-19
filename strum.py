@@ -4,7 +4,7 @@ import numpy as np
 class Song(object):
     '''Input is difficulty, output is a random strum pattern and random chord progression.'''
 
-    def __init__(self, diff=1, mode_num=1):
+    def __init__(self, diff=1):
 
         self.key = choice(["A","C","D","E","G"])
         self.prog = self.progression(diff)
