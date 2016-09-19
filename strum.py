@@ -1,23 +1,12 @@
-<<<<<<< HEAD
-=======
-from time import perf_counter, sleep
->>>>>>> 89cd66123a94281ace3877eefc316052cc8f13ae
 from random import choice
 import numpy as np
 
 class Song(object):
-<<<<<<< HEAD
     '''Input is difficulty, output is a random strum pattern and random chord progression.'''
-    def __init__(self, diff=1):
-
-        self.key = choice(["A","C","D","E","G"])
-=======
 
     def __init__(self, diff=1, mode_num=1):
 
         self.key = choice(["A","C","D","E","G"])
-        self.mode_name, self.mode_intervals = self.modes(mode_num)
->>>>>>> 89cd66123a94281ace3877eefc316052cc8f13ae
         self.prog = self.progression(diff)
         self.timesig = None
         self.strum = self.strumpattern()
@@ -49,27 +38,11 @@ class Song(object):
                 }
         return choice(progdict.get(diff))
 
-<<<<<<< HEAD
     def prog_notes(self):
         '''returns notes in given chord progression'''
         major = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"]
         tonic = major.index(self.key)
         keyoftonic = [major[(tonic+i)%12] for i in range(7)]
-=======
-    def modes(self, mode_num):
-        ionian = [2,2,1,2,2,2,1] #"TTSTTTS"
-        intervals = [(ionian[i:]+ionian[:i])[:6] for i in range(len(ionian))]
-        mode_name_lst = ["Ionian","Dorian","Phrygian","Lydian","Mixolydian",
-                "Aeolian","Locrian"]
-        return mode_name_lst[mode_num - 1], intervals[mode_num -1]
-
-    def prog_notes(self):
-        '''returns notes in given chord progression'''
-        major = ["A","A#","B","C","C#","D","D#","E","F","F#","G","G#"] #minor?
-        tonic = major.index(self.key)
-        keyoftonic = [major[(tonic+sum(self.mode_intervals[0:i]))%12] for i in range(7)]
->>>>>>> 89cd66123a94281ace3877eefc316052cc8f13ae
-        #print(keyoftonic)
         notes = []
         for i in range(len(self.prog)):
             note = []
@@ -91,18 +64,9 @@ class Song(object):
 
 
 if __name__=='__main__':
-<<<<<<< HEAD
     diff = int(input("Choose Difficulty: 1, 2, or 3\n"))
     song1 = Song(diff=diff)
     print(song1.prog)
     print(song1.strum)
     print(song1.notes)
     print(song1.timesig)
-=======
-
-    song1 = Song(diff=1, mode_num=1)
-    print(song1.mode_name)
-    print(song1.prog)
-    print(song1.strum)
-    print(song1.notes)
->>>>>>> 89cd66123a94281ace3877eefc316052cc8f13ae
